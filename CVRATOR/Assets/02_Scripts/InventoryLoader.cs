@@ -183,8 +183,8 @@ public class InventoryLoader : MonoBehaviour {
         renderer.transform.position = new Vector3(canvasBase.transform.position.x - (canvasBase.transform.localScale.x / 2), canvasBase.transform.position.y - (0.5f * canvasBase.transform.position.y), canvasBase.transform.position.z - (canvasBase.transform.localScale.z));
 
         //canvasBase.AddComponent<BoxCollider>();
-        //canvasBase.GetComponent<MeshRenderer>().enabled = false;
-        canvasBase.transform.Rotate(0.0f, 180.0f, 0.0f);
+        canvasBase.GetComponent<MeshRenderer>().enabled = false;
+        //canvasBase.transform.Rotate(0.0f, 180.0f, 0.0f);
         canvasBase.AddComponent<ColliderDetector>();
         canvasBase.AddComponent<Rigidbody>();
         canvasBase.GetComponent<Rigidbody>().useGravity = false;

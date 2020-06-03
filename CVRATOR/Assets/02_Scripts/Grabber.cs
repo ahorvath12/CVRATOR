@@ -140,6 +140,7 @@ public class Grabber : MonoBehaviour {
     {
         bool matchesFloor = surface.tag == "Floor" && artwork.tag == "FloorArt";
         bool matchesWall = surface.tag == "Wall" && artwork.tag == "WallArt";
+        Debug.Log(surface.name);
         return (matchesFloor || matchesWall);
     }
 
@@ -194,14 +195,14 @@ public class Grabber : MonoBehaviour {
         return isHolding;
     }
 
-    public bool CheckCanDrop()
-    {
-        ColliderDetector cd = heldObject.GetComponent<ColliderDetector>();
+    //public bool CheckCanDrop()
+    //{
+    //    ColliderDetector cd = heldObject.GetComponent<ColliderDetector>();
 
-        if (cd.GetCollisionStatus() == false)
-        {
-            return true;
-        }
-        return false;
-    }
+    //    if (cd.GetCollisionStatus() == false)
+    //    {
+    //        return true;
+    //    }
+    //    return false;
+    //}
 }

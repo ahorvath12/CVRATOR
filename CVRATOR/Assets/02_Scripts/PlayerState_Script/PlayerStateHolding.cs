@@ -17,22 +17,25 @@ public class PlayerStateHolding : PlayerState {
 
     public override void StepState()
     {
-        if (OneButtonIsDown())
-           stateData.grabber.UpdateHeldObjectTransform(1);
-        else if (TwoButtonIsDown())
-           stateData.grabber.UpdateHeldObjectTransform(-1);
-        else
-           stateData.grabber.UpdateHeldObjectTransform(0);
+        //if (OneButtonIsDown())
+        //   stateData.grabber.UpdateHeldObjectTransform(1);
+        //else if (TwoButtonIsDown())
+        //   stateData.grabber.UpdateHeldObjectTransform(-1);
+        //else
+        //   stateData.grabber.UpdateHeldObjectTransform(0);
 
         if (GripIsPressed())
+        {
+            Debug.Log("Holding");
             stateData.grabber.AttemptSnap();
+        }
     }
 
     public override Pair<bool, StateEnum> CheckExitConditions()
     {
         Pair<bool, StateEnum> pair = new Pair<bool, StateEnum>(false, StateEnum.Hold);
 
-        if (!TriggerIsPressed() && CheckCanDrop())
+        if (!TriggerIsPressed())
             pair = new Pair<bool, StateEnum>(true, StateEnum.Default);
 
         return pair;
@@ -40,13 +43,13 @@ public class PlayerStateHolding : PlayerState {
 
     public override void ExitAction(StateEnum destinationState)
     {
-        if (destinationState == StateEnum.Default && CheckCanDrop())
+        if (destinationState == StateEnum.Default) //&& CheckCanDrop())
             stateData.grabber.DropObject();
     }
 
-    private bool CheckCanDrop()
-    {
-        //return true;
-        return stateData.grabber.CheckCanDrop();
-    }
+    //private bool CheckCanDrop()
+    //{
+    //    //return true;
+    //    return stateData.grabber.CheckCanDrop();
+    //}
 }
